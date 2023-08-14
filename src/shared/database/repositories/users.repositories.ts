@@ -20,4 +20,8 @@ export class UsersRepository {
       },
     });
   }
+
+  findUnique(findUniqueDTO: Prisma.UserFindUniqueArgs) {
+    return this.prismaService.user.findUnique(findUniqueDTO);
+  }
 }
