@@ -1,16 +1,14 @@
-import {
-  IsString,
-  IsNotEmpty,
-  IsBoolean,
-  IsEnum,
-  IsEmpty,
-} from 'class-validator';
+import { IsString, IsNotEmpty, IsBoolean, IsEnum } from 'class-validator';
 import { PostType } from '../entities/Post';
 
 export class CreatePostDto {
   @IsString()
   @IsNotEmpty()
   title: string;
+
+  @IsString()
+  @IsNotEmpty()
+  subtitle: string;
 
   @IsString()
   @IsNotEmpty()

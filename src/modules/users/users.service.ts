@@ -12,6 +12,7 @@ export class UsersService {
       select: {
         name: true,
         email: true,
+        avatar: true,
       },
     });
   }
