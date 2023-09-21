@@ -33,9 +33,24 @@ export class PostsController {
     return this.postsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.postsService.findOne(+id);
+  @Get(':postId')
+  @IsPublic()
+  findOne(@Param('postId') postId: string) {
+    return this.postsService.findOne(postId);
+  }
+
+  @Get('/resume/:postId')
+  @IsPublic()
+  resumeOne(@Param('postId') postId: string) {
+    return this.postsService.resumeOne(postId);
+  }
+
+  @Get('/resume')
+  @IsPublic()
+  resumeAll() {
+    console.log('resume');
+
+    return this.postsService.resumeAll();
   }
 
   @Post(':postId/publish')
@@ -52,16 +67,16 @@ export class PostsController {
     return this.postsService.publish(userId, postId);
   }
 
-  @Patch(':id')
+  @Patch(':postId')
   update(
-    @Param('id', ParseUUIDPipe) id: string,
+    @Param('postId', ParseUUIDPipe) postId: string,
     @Body() updatePostDto: UpdatePostDto,
   ) {
-    return this.postsService.update(+id, updatePostDto);
+    return this.postsService.update(postId, updatePostDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.postsService.remove(+id);
+  @Delete(':postId')
+  delete(@Param('postId') postId: string) {
+    return this.postsService.delete(postId);
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreatePostDto } from '../dto/create-post.dto';
 import { UpdatePostDto } from '../dto/update-post.dto';
 import { PostsRepository } from 'src/shared/database/repositories/posts.repositories';
@@ -11,8 +11,91 @@ export class PostsService {
     private readonly validatePostOwnershipService: ValidatePostOwnershipService,
   ) {}
 
+  findAll() {
+    return this.postRepository.findAll({
+      include: {
+        user: {
+          select: {
+            name: true,
+            avatar: true,
+          },
+        },
+      },
+    });
+  }
+
+  findOne(postId: string) {
+    return this.postRepository.findUnique({
+      where: {
+        id: postId,
+      },
+      include: {
+        user: {
+          select: {
+            name: true,
+            avatar: true,
+          },
+        },
+        _count: {
+          select: {
+            comments: {
+              where: {
+                postId,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  resumeOne(postId: string) {
+    return this.postRepository.findUnique({
+      where: {
+        id: postId,
+      },
+      select: {
+        id: true,
+        title: true,
+        createdAt: true,
+        likes: true,
+        user: {
+          select: {
+            name: true,
+            avatar: true,
+          },
+        },
+      },
+    });
+  }
+
+  resumeAll() {
+    return this.postRepository.findAll({
+      select: {
+        id: true,
+        title: true,
+        thumbnail: true,
+        description: true,
+        createdAt: true,
+        type: true,
+        category: {
+          select: {
+            name: true,
+          },
+        },
+        user: {
+          select: {
+            name: true,
+            avatar: true,
+          },
+        },
+      },
+    });
+  }
+
   create(userId: string, createPostDto: CreatePostDto) {
-    const { title, description, content, published, type } = createPostDto;
+    const { title, description, content, published, type, subtitle } =
+      createPostDto;
 
     return this.postRepository.create({
       data: {
@@ -22,16 +105,9 @@ export class PostsService {
         published,
         type,
         userId,
+        subtitle,
       },
     });
-  }
-
-  findAll() {
-    return this.postRepository.findAll();
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} post`;
   }
 
   async publish(userId: string, id: string) {
@@ -47,9 +123,15 @@ export class PostsService {
     });
   }
 
-  update(id: number, updatePostDto: UpdatePostDto) {
+  update(id: string, updatePostDto: UpdatePostDto) {
     return `This action updates a #${id} post`;
   }
 
-  remove(id: number) {}
+  delete(postId: string) {
+    return this.postRepository.delete({
+      where: {
+        id: postId,
+      },
+    });
+  }
 }
