@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "220de3f0-7c7a-42b9-93d1-f8a5dfcf824b",
+		"name": "Paper.me",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18803659"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{activeAccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Takeoff\",\r\n    \"avatar\": \"https://people.com/thmb/OFcnycFmMDZGcmVx687RClRtHnQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(959x492:961x494):format(webp)/takeoff-cause-of-death-confirmed-110222-20d4ec1ad13849afbbdf3e3525df46ee.jpg\",\r\n    \"email\": \"takeoff@mail.com\",\r\n    \"password\": \"youngtake\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/signup",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"takeoff@mail.com\",\r\n    \"password\": \"youngtake\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/signin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{activeAccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts/42a17f7a-7344-4ffe-aff4-fab5cb64ced1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								"42a17f7a-7344-4ffe-aff4-fab5cb64ced1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resume",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts/resume/42a17f7a-7344-4ffe-aff4-fab5cb64ced1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								"resume",
+								"42a17f7a-7344-4ffe-aff4-fab5cb64ced1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ResumeList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts/resume",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								"resume"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListByUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{activeAccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"title\": \"Exploring the Wonders of Deep Space Exploration\",\r\n        \"subtitle\": \"Exploring the Wonders\",\r\n        \"description\": \"A captivating article on the latest breakthroughs in space exploration — Unveiling the mysteries of our vast universe.\",\r\n        \"published\": true,\r\n        \"content\": \"The human fascination with space has driven remarkable advancements in our understanding of the cosmos. In this article, we delve into recent achievements in deep space exploration, from discovering exoplanets to unraveling the secrets of black holes. By highlighting the collaborative efforts of scientists and space agencies, we invite readers to embark on a journey of cosmic discovery.\",\r\n        \"type\": \"ARTICLE\",\r\n        \"thumbnail\": \"https://example.com/space-exploration-thumbnail.png\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/posts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{activeAccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Novo Post\",\r\n    \"description\": \"Novo post criado\",\r\n    \"published\": true,\r\n    \"content\": \"Esse é o conteúdo do post\",\r\n    \"type\": \"ARTICLE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/posts/1a0bb51b-0eba-47ac-9187-4a950740c989/publish",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								"1a0bb51b-0eba-47ac-9187-4a950740c989",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{activeAccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts/947c0856-3ad2-4961-acd4-514289a651ba",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								"947c0856-3ad2-4961-acd4-514289a651ba"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "ListByPost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comments/42a17f7a-7344-4ffe-aff4-fab5cb64ced1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments",
+								"42a17f7a-7344-4ffe-aff4-fab5cb64ced1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{activeAccessToken2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Parabéns pelo seu projeto!!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/comments/42a17f7a-7344-4ffe-aff4-fab5cb64ced1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments",
+								"42a17f7a-7344-4ffe-aff4-fab5cb64ced1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
