@@ -8,6 +8,11 @@ Esta API, que permite o gerencimento de Usuários, Posts,, foi desenvolvida visa
 
 AS seguintes tecnologias e ferramentas foram utilizadas neste projeto: `NestJS, Typescript, PostgreSQL, JWT, Docker, Postman`
 
+## Funcionalidades
+
+- CRUD das entidades mencionadas.
+- Sistema de autenticação JWT
+
 ## Como utilizar
 
 Para consumir esta API, é preciso seguir o passo a passo abaixo ou utilizar a URL do serviço em nuvem  (através deste link: [PapermeAPI](https://google.com)).
@@ -44,6 +49,9 @@ $ npm run start
 O servidor inciará localmente na porta 3000 (citada no arquivo .env). Use o Insomnia ou Postman para simular requisições e respostas das rotas (pelo link https://localhost:3000) ou utilize o projeto de aplicativo mobile do "OwlPartners" para executar as funcionalidades da aplicação (acesse o repositório por este [link](https://github.com/jp-prud/Paper.me)).
 
 Caso queira utilizar o **Postman** para testar as rotas, utilize o arquivo "Paper.me.postman_collections.json" para importar as requisições.
+
+As rotas, em sua grande maioria, utilizam um `token JWT` do usuário autenticado para realizar as requisições privadas. Certifique-se de utilizar o método "Sign-in" para obter o "T=token" e envie-o nos "headers" da aplicação.
+
 ## Variáveis de Ambiente
 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env.
@@ -54,7 +62,4 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 | `JWT_SECRET`         | Chave secreta para tokens JWT                    | Mantenha esta chave em segredo para autenticar com segurança tokens JWT em seu aplicativo.     |
 | `PORT`               | Porta de execução do aplicativo                 | Escolha uma porta disponível para acessar seu aplicativo através dela.                           |
 
-## Funcionalidades
 
-- CRUD das entidades mencionadas.
-- Sistema de autenticação JWT
