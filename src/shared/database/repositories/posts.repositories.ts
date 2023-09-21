@@ -6,6 +6,18 @@ import { type Prisma } from '@prisma/client';
 export class PostsRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
+  findFirst(findFirstDTO: Prisma.PostFindFirstArgs) {
+    return this.prismaService.post.findFirst(findFirstDTO);
+  }
+
+  findUnique(findUniqueDTO: Prisma.PostFindUniqueArgs) {
+    return this.prismaService.post.findUnique(findUniqueDTO);
+  }
+
+  findAll(findManyDTO?: Prisma.PostFindManyArgs) {
+    return this.prismaService.post.findMany(findManyDTO);
+  }
+
   create(createDTO: Prisma.PostCreateArgs) {
     return this.prismaService.post.create(createDTO);
   }
@@ -14,15 +26,7 @@ export class PostsRepository {
     return this.prismaService.post.update(publishDTO);
   }
 
-  findFirst(findFirstDTO: Prisma.PostFindFirstArgs) {
-    return this.prismaService.post.findFirst(findFirstDTO);
-  }
-
-  findAll() {
-    return this.prismaService.post.findMany();
-  }
-
-  findUnique(findUniqueDTO: Prisma.PostFindUniqueArgs) {
-    return this.prismaService.post.findUnique(findUniqueDTO);
+  delete(removeDTO: Prisma.PostDeleteArgs) {
+    return this.prismaService.post.delete(removeDTO);
   }
 }
