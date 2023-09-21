@@ -32,6 +32,8 @@ export class AuthService {
     const isPasswordValid = await compare(password, user.password);
 
     if (!isPasswordValid) {
+      console.log('senha errada');
+
       throw new UnauthorizedException('Invalid credentials');
     }
 
@@ -41,7 +43,7 @@ export class AuthService {
   }
 
   async signup(signupDto: SignupDto) {
-    const { email, password, name } = signupDto;
+    const { email, password, name, avatar } = signupDto;
 
     const emailTaken = await this.usersRepository.findByEmail(email);
 
@@ -53,13 +55,15 @@ export class AuthService {
 
     const user = await this.usersRepository.create({
       data: {
-        email,
         name,
+        avatar,
+        email,
         password: hashedPassword,
         posts: {
           create: {
             title: 'Welcome 🙂!',
             description: 'This is a simple description to your first post.',
+            subtitle: 'This is a subtitle',
             content: `Welcome, ${name}!! This is your first post!`,
             type: 'ARTICLE',
           },
