@@ -15,6 +15,7 @@ model User {
   email     String    @unique
   name      String
   password  String
+  avatar    String
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
   posts     Post[]
@@ -36,10 +37,12 @@ model Post {
   userId      String    @map("user_id")
   categoryId  String?   @map("category_id")
   title       String
+  subtitle    String
   description String
   published   Boolean   @default(false)
   content     String
   thumbnail   String?
+  likes       Int       @default(0)
   type        PostType
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @updatedAt @map("updated_at")
@@ -56,6 +59,7 @@ model Comment {
   postId    String   @map("post_id")
   userId    String   @map("user_id")
   content   String
+  likes     Int      @default(0)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
