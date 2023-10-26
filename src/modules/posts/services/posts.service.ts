@@ -13,6 +13,9 @@ export class PostsService {
 
   findAll() {
     return this.postRepository.findAll({
+      orderBy: {
+        createdAt: 'desc',
+      },
       include: {
         user: {
           select: {
@@ -94,8 +97,15 @@ export class PostsService {
   }
 
   create(userId: string, createPostDto: CreatePostDto) {
-    const { title, description, content, published, type, subtitle } =
-      createPostDto;
+    const {
+      title,
+      description,
+      content,
+      thumbnail,
+      published,
+      type,
+      subtitle,
+    } = createPostDto;
 
     return this.postRepository.create({
       data: {
@@ -103,6 +113,7 @@ export class PostsService {
         description,
         content,
         published,
+        thumbnail,
         type,
         userId,
         subtitle,

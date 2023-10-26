@@ -59,15 +59,6 @@ export class AuthService {
         avatar,
         email,
         password: hashedPassword,
-        posts: {
-          create: {
-            title: 'Welcome 🙂!',
-            description: 'This is a simple description to your first post.',
-            subtitle: 'This is a subtitle',
-            content: `Welcome, ${name}!! This is your first post!`,
-            type: 'ARTICLE',
-          },
-        },
       },
     });
 

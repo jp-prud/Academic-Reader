@@ -10,6 +10,8 @@ export class UsersService {
     return this.usersRepository.findUnique({
       where: { id: userId },
       select: {
+        id: true,
+        createdAt: true,
         name: true,
         email: true,
         avatar: true,

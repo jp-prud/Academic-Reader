@@ -14,6 +14,7 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { IsPublic } from 'src/shared/decorators/IsPublic';
 import { ActiveUserId } from 'src/shared/decorators/ActiveUserId';
+import { OrderByOptions } from '../comments/comments.service';
 
 @Controller('posts')
 export class PostsController {

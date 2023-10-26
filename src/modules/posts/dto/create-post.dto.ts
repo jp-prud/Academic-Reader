@@ -24,4 +24,8 @@ export class CreatePostDto {
   @IsNotEmpty()
   @IsEnum(PostType)
   type: PostType;
+
+  @IsString()
+  @IsNotEmpty()
+  thumbnail: string;
 }
