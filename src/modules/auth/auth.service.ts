@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   async signup(signupDto: SignupDto) {
-    const { email, password, name, avatar } = signupDto;
+    const { email, password, name } = signupDto;
 
     const emailTaken = await this.usersRepository.findByEmail(email);
 
@@ -56,7 +56,6 @@ export class AuthService {
     const user = await this.usersRepository.create({
       data: {
         name,
-        avatar,
         email,
         password: hashedPassword,
       },

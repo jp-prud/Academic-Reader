@@ -1,0 +1,3 @@
+-> Criar módulo de comentários // Criar query com filtros de ordenação, O post deve retornar o nome e avatar do usuário, junto as suas curtidas
+-> Adicionar informações de Subtitulo, Thumbnail, Likes e Reposts? no Post
+-> Retonar as informações de Avatar do usuário na query do Post

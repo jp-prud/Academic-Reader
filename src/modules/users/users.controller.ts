@@ -6,10 +6,8 @@ import {
   Patch,
   Param,
   Delete,
-  Req,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ActiveUserId } from 'src/shared/decorators/ActiveUserId';
 
@@ -18,9 +16,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return 'teste';
-  }
+  create() {}
 
   @Get('/me')
   me(@ActiveUserId() userId: string) {
