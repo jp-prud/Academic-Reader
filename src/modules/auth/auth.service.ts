@@ -43,7 +43,20 @@ export class AuthService {
   }
 
   async signup(signupDto: SignupDto) {
-    const { email, password, name } = signupDto;
+    const { email, password, avatar, username, fullName } = signupDto;
+
+    const usernameTaken = await this.usersRepository.findUnique({
+      where: {
+        username,
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    if (usernameTaken) {
+      throw new ConflictException('This username is already in use.');
+    }
 
     const emailTaken = await this.usersRepository.findByEmail(email);
 
@@ -55,7 +68,9 @@ export class AuthService {
 
     const user = await this.usersRepository.create({
       data: {
-        name,
+        username,
+        fullName,
+        avatar,
         email,
         password: hashedPassword,
       },

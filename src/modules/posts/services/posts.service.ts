@@ -19,7 +19,8 @@ export class PostsService {
       include: {
         user: {
           select: {
-            name: true,
+            username: true,
+            fullName: true,
             avatar: true,
           },
         },
@@ -35,7 +36,8 @@ export class PostsService {
       include: {
         user: {
           select: {
-            name: true,
+            username: true,
+            fullName: true,
             avatar: true,
           },
         },
@@ -64,7 +66,8 @@ export class PostsService {
         likes: true,
         user: {
           select: {
-            name: true,
+            username: true,
+            fullName: true,
             avatar: true,
           },
         },
@@ -88,7 +91,8 @@ export class PostsService {
         },
         user: {
           select: {
-            name: true,
+            username: true,
+            fullName: true,
             avatar: true,
           },
         },

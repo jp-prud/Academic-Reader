@@ -17,7 +17,8 @@ export class CommentsService {
       include: {
         user: {
           select: {
-            name: true,
+            username: true,
+            fullName: true,
             avatar: true,
           },
         },
