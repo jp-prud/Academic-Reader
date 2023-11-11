@@ -25,7 +25,7 @@
     "prisma:build": "prisma migrate dev",
     "generate": "prisma generate",
     "postinstall": "yarn prisma:deploy && yarn generate",
-    "deploy": "yarn postinstall && build && yarn start:prod"
+    "deploy": "yarn postinstall && yarn build && yarn start:prod"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
