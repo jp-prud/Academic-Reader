@@ -24,8 +24,8 @@
     "prisma:deploy": "prisma migrate deploy --preview-feature",
     "prisma:build": "prisma migrate dev",
     "generate": "prisma generate",
-    "postinstall": "yarn prisma:deploy && yarn prisma:build && yarn generate",
-    "deploy": "yarn postinstall && yarn start:prod"
+    "postinstall": "yarn prisma:deploy && yarn generate",
+    "deploy": "yarn postinstall && build && yarn start:prod"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
